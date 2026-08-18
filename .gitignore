@@ -1,0 +1,13 @@
+cat << 'EOF' > .gitignore
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+EOF
