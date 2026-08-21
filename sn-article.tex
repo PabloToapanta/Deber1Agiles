@@ -189,7 +189,6 @@ El sistema debe estar listo en seis meses. Antes de iniciar el desarrollo, la un
  %% SECCIÓN 2: METODOLOGÍA RAD (Pablo Toapanta)
  %% =========================================================================
  \section{Caso de Estudio: Metodología RAD}\label{sec:rad}
- 
  \subsection{Parte 1: Análisis Inicial}
  \subsubsection{Identificación de Interesados}
  \subsubsection{Requisitos Funcionales (mínimo 8) y No Funcionales (4)}
@@ -197,11 +196,50 @@ El sistema debe estar listo en seis meses. Antes de iniciar el desarrollo, la un
  \subsubsection{Requisitos que Necesitan Mayor Aclaración}
  
  \subsection{Parte 2: Aplicación de la Metodología (Planificación a 6 Meses)}
- \subsubsection{Fases RAD (Modelado de Gestión, Datos, Proceso, Construcción, Pruebas)}
+\subsubsection{Justificación del modelo RAD}
+La justificación de este modelo esta sustentada en la reestricción de tiempo de seis para la entrega del producto. La literatura científica demuestra que RAD es efectiva en escenarios dinamicos, donde se prioriza la velocidad y el prototipado iterativo \cite{purnamasari_rapid_2026}. 
+De acuerdo a la literatura consultada en \cite{purnamasari_rapid_2026} y \cite{alvarez-pineda_implementacion_2026} las fases de la metodologia RAD son:
+\begin{itemize}
+	\item \textbf{Planificacion de requisitos}. En esta fase se definen de manera supercifial los requerimeintos esenciales  a través de entrevistas semiestructuradas y talleres de Diseño Conjunto de Aplicaciones con los skateholders.
+	\item \textbf{Diseño de usuario}. En esta fase se usan maquetas de alta fidelidad, con el fin de ejecutar varios ciclos de retroalimentacioin donde los usuarios interactuen con la interfaz para validad la navegacion y estructura de la aplicacion.
+	\item \textbf{Construccion}. En esta fase se empieza a codificar todos los modulos que componen el sistema, siempre haciendo pruebas tempranamente para asegurar correcta funcionalidad.
+	\item \textbf{Transicion}. En esta fase se valida el entorno de produccion real, se capacitan a los usuarios y se pone en marcha a la aplicacion.
+\end{itemize}
+ \subsubsection{Fases RAD }
+En la adaptación práctica del proyecto universitario, estas fases se correlacionan de la siguiente manera \cite{purnamasari_rapid_2026}:
+\begin{enumerate}
+	\item \textbf{Modelado de Gestión y Datos (Planificación):} Identificación de la información que fluye entre los responsables de laboratorio y docentes. Mapeo de inventario (equipos) y usuarios.
+	\item \textbf{Modelado de Proceso (Diseño de Usuario):} Definición de cómo la información se transforma (flujo de reserva, check-in/check-out de equipos). Se materializa en prototipos.
+	\item \textbf{Generación de la Aplicación (Construcción):} Uso de herramientas de desarrollo rápido, frameworks o herramientas Low-Code/RAD \cite{radvilaite_integrating_2025} para transformar los diseños en código ejecutable.
+	\item \textbf{Pruebas y Entrega (Transición):} Comprobación del sistema integrado, pruebas de usabilidad y despliegue final.
+\end{enumerate}
+ 
  \subsubsection{Productos y Entregables por Fase}
+ \begin{itemize}
+ 	\item \textbf{Fase 1:} Matriz de Requisitos (SRS), Diagrama de Casos de Uso y Cronograma inicial \cite{purnamasari_rapid_2026}.
+ 	\item \textbf{Fase 2:} Prototipos navegables (UI/UX en Figma), Modelo Entidad-Relación y diagramas de actividad \cite{alvarez-pineda_implementacion_2026, purnamasari_rapid_2026}.
+ 	\item \textbf{Fase 3:} Código fuente funcional versionado, Base de datos integrada.
+ 	\item \textbf{Fase 4:} Manuales de usuario, Reporte de Pruebas de Aceptación (UAT) y Sistema en Producción \cite{purnamasari_rapid_2026}.
+ \end{itemize}
  \subsubsection{Matriz de Responsables y Equipos Paralelos}
+ La metodología RAD sugiere dividir el desarrollo en equipos paralelos para ganar velocidad \cite{purnamasari_rapid_2026}:
+ \begin{itemize}
+ 	\item \textbf{Equipo A (Gestión y Usuarios):} Desarrolladores y Analistas encargados del catálogo de laboratorios y control de roles.
+ 	\item \textbf{Equipo B (Reservas y Préstamos):} Desarrolladores encargados del motor de reservas, reportes de daños y check-in/out.
+ 	\item \textbf{Responsables Transversales:} Diseñador UI/UX, QA Tester, Administrador de Base de Datos y los Stakeholders (Docentes/Encargados de laboratorio) que participan continuamente.
+ \end{itemize}
  \subsubsection{Estrategia de Pruebas y Control de Calidad}
- \subsubsection{Mecanismo de Gestión de Cambios (Cajas de Tiempo)}
+La estrategia de aseguramiento de calidad será continua y se integrará dentro de los ciclos iterativos de RAD, empleando las siguientes técnicas documentadas en la literatura \cite{purnamasari_rapid_2026, alvarez-pineda_implementacion_2026}:
+
+\begin{itemize}
+	\item \textbf{Pruebas de Caja Gris (Grey-Box Testing):} Implementadas durante la fase de Construcción. De acuerdo con la metodología aplicada en \cite{purnamasari_rapid_2026}, estas pruebas combinan el análisis funcional (caja negra) con la validación de la estructura interna del código (caja blanca). En este proyecto, son cruciales para verificar las interacciones complejas en la base de datos (por ejemplo, asegurar que cuando un equipo tecnológico se reserva, el stock disminuya correctamente en el \textit{backend}) mientras se prueba la interfaz.
+	
+	\item \textbf{Pruebas de Accesibilidad y Usabilidad:} Ejecutadas iterativamente sobre los prototipos. Se evaluará el contraste de colores, etiquetas descriptivas y la correcta jerarquía visual de los formularios de reserva, garantizando una navegación accesible e intuitiva \cite{alvarez-pineda_implementacion_2026}.
+	
+	\item \textbf{Pruebas de Aceptación del Usuario (UAT):} Ejecutadas en la fase de Transición. Consisten en pruebas prácticas donde los distintos roles (Administrador, Docente, Estudiante) validan el sistema bajo escenarios de trabajo reales (como generar un reporte mensual o aprobar un préstamo) para confirmar que cumple con todos los requisitos \cite{purnamasari_rapid_2026}.
+\end{itemize}
+\subsubsection{Mecanismo de Gestión de Cambios (Cajas de Tiempo e Implementación por Fases)}
+Siguiendo las directrices de la metodología RAD, el tiempo de entrega de 6 meses es inamovible. Para gestionar los cambios o nuevos requerimientos, se utilizará la técnica de \textit{Timeboxing} en iteraciones estrictas \cite[p.~340]{purnamasari_rapid_2026}. Además, si una funcionalidad solicitada (como un cambio de alcance) excede el tiempo de desarrollo asignado, se aplicará un enfoque de implementación por fases: las funciones críticas se desplegarán primero para cumplir con el plazo, y las características secundarias se postergarán para actualizaciones futuras \cite[p.~340]{purnamasari_rapid_2026}.
  \subsubsection{Cronograma General a 6 Meses}
  
  \subsection{Parte 3: Representación Visual}
