@@ -243,3 +243,80 @@ Al final del documento verás bloques como `\bmhead{Acknowledgements}` o `\secti
 \end{document}
 
 ```
+
+---
+
+**7. Guía detallada: Insertar imágenes**
+
+### Paso 1: Copiar la imagen al proyecto
+
+Guarda la imagen en la carpeta raíz del proyecto (la misma donde está `sn-article.tex`).
+
+> **⚠️ Reglas para el nombre del archivo (MUY IMPORTANTE):**
+> * **Sin espacios:** usa `diagrama_prototipos.png`, NO `diagrama prototipos.png`.
+> * **Sin tildes ni ñ:** usa `cronograma.png`, NO `cronógrama.png` ni `año.png`.
+> * **Sin mayúsculas confusas:** LaTeX distingue `Foto.PNG` de `foto.png`. Usa siempre minúsculas para nombre y extensión.
+>
+> Si el nombre tiene espacios o tildes, LaTeX no encontrará la imagen y dará el error `File not found`.
+
+**Formatos soportados:**
+| Formato | ¿Funciona? | Nota |
+|---------|-----------|------|
+| `.png` | ✅ Directo | Recomendado para diagramas y capturas |
+| `.jpg` | ✅ Directo | Recomendado para fotos |
+| `.pdf` | ✅ Directo | Ideal si exportas desde draw.io como PDF (calidad infinita) |
+| `.eps` | ⚠️ Se convierte solo | pdflatex lo transforma automáticamente a PDF |
+
+> **Tip para draw.io:** exporta directamente como `.pdf` (Archivo → Exportar → PDF) en vez de `.png`. El diagrama se verá nítido a cualquier zoom.
+
+### Paso 2: Insertar la figura en `sn-article.tex`
+
+Pega este bloque donde quieras que aparezca la imagen:
+
+```latex
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{diagrama_prototipos.png}
+	\caption{Flujo de trabajo del Modelo de Prototipos.}
+	\label{fig:prototipos}
+\end{figure}
+```
+
+Explicación línea por línea:
+* `\begin{figure}[htbp]`: le dice a LaTeX dónde puede colocar la imagen (`h`=aquí, `t`=arriba de página, `b`=abajo, `p`=página aparte). LaTeX decide la mejor opción; no te asustes si la imagen "flota" a otra posición cercana.
+* `\centering`: centra la imagen horizontalmente.
+* `\includegraphics[width=0.8\textwidth]{...}`: inserta la imagen al 80% del ancho de la página. Ajusta el número según necesites (`0.5` = mitad, `1.0` = ancho completo).
+* `\caption{...}`: texto que aparece debajo de la imagen. LaTeX lo numera automáticamente (Figura 1, Figura 2...).
+* `\label{fig:prototipos}`: nombre interno para referenciarla. Debe ser único por figura.
+
+### Paso 3: Referenciar la figura en el texto
+
+Nunca escribas "como se ve en la Figura 1" a mano (el número puede cambiar). Usa:
+
+```latex
+Como se observa en la Figura~\ref{fig:prototipos}, el flujo comienza con...
+```
+
+LaTeX reemplazará `\ref{fig:prototipos}` por el número correcto automáticamente.
+
+> Si en el PDF la referencia aparece como `??`, compila dos veces más (**F6 → F6**). Es normal: LaTeX necesita una pasada para resolver las etiquetas.
+
+### Errores comunes y soluciones
+
+| Error / Síntoma | Causa | Solución |
+|-----------------|-------|----------|
+| `File not found` o `not found` en el log | Nombre mal escrito o imagen fuera de la carpeta | Verifica nombre exacto (con extensión) y que esté junto a `sn-article.tex` |
+| La imagen sale gigante o cortada | Ancho muy grande | Reduce: `width=0.7\textwidth` |
+| Aparece `??` en vez del número | Etiqueta sin resolver | Compila de nuevo con F6 |
+| `git push` subió todo menos la imagen | Olvidaste hacer `git add` de la imagen | `git add nombre_imagen.png` antes del commit |
+
+### Paso 4: Subir la imagen al repositorio (Git)
+
+Las imágenes son archivos normales para Git; solo recuerda incluirlas en el commit:
+
+```bash
+git add diagrama_prototipos.png sn-article.tex
+git commit -m "feat: agregado diagrama de flujo de prototipos"
+git pull --rebase origin main
+git push origin main
+```
