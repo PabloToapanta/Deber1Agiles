@@ -10,4 +10,5 @@ cat << 'EOF' > .gitignore
 *.synctex.gz
 *.synctex(busy)
 *.pdfsync
+*.sty
 EOF
