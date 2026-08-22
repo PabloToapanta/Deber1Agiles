@@ -777,30 +777,35 @@ Siguiendo las directrices de la metodología RAD, el tiempo de entrega de 6 mese
  \begin{itemize}
  	\item \textbf{¿Qué metodología ofrece mayor control y trazabilidad?}\\
  	% Escribe tu respuesta aquí
+	La metodología RAD brinda más control sobre el \textbf{cronograma} por su rigurosa limitación de tiempo y segmentación en equipos paralelos. Evitas que el proyecto se prolongue por tiempo indefinido al obligar a tomar decisiones rápidamente (hasta eliminar requisitos peligrosos para alcanzar la meta). El modelo de prototipos, al ser más adaptable, tiene el potencial de perder trazabilidad si las iteraciones se vuelven interminables y no se registran correctamente las versiones.
  	
  	\item \textbf{¿Cuál facilita la detección temprana de errores?}\\
  	% Escribe tu respuesta aquí
- 	
+ 	El Modelo de Prototipos. Al construir una versión inicial ejecutable (o maquetas interactivas) desde las primeras semanas y someterla a la evaluación directa de los docentes y responsables de laboratorio, permite identificar errores de lógica de negocio, de usabilidad o malas interpretaciones de los requisitos antes de escribir el código definitivo.
  	\item \textbf{¿Cuál enfrenta mayores dificultades cuando cambian los requisitos?}\\
  	% Escribe tu respuesta aquí
+ 	RAD afronta el mayor obstáculo en lo que concierne a la \textbf{integración completa} de los nuevos requerimientos. RAD no puede extender el cronograma, ya que su principal promesa es la entrega pronta dentro de un plazo fijo (en este proyecto, 6 meses). Para subsistir a la transformación, RAD se ve forzado a reducir el alcance, realizar implementaciones limitadas o postergar lo requerido. En cambio, el Modelo de Prototipos incorpora el cambio de manera más natural al agregar una iteración adicional, aunque esto implique sacrificar y extender tanto la fecha de entrega como el presupuesto.
+ 	
  	
  	\item \textbf{¿En qué tipo de proyectos sería conveniente utilizar las metodologías utilizadas?}\\
  	% Escribe tu respuesta aquí
- 	
+ 	 El \textbf{Modelo de Prototipos} es perfecto para sistemas en los que la interfaz de usuario (UI/UX) es crucial para el éxito del software o cuando los usuarios finales no tienen sus necesidades definidas desde el principio. \textbf{RAD} es muy apropiado para sistemas de gestión administrativa, como este sistema de laboratorios, en el que los procedimientos comerciales ya se han establecido. La prioridad es digitalizarlos con rapidez y existen herramientas de desarrollo acelerado o frameworks modernos disponibles.
  	\item \textbf{¿Por qué una metodología tradicional todavía puede ser apropiada?}\\
  	% Escribe tu respuesta aquí
- 	
+ En contextos institucionales o gubernamentales donde el tiempo y el presupuesto se distribuyen a través de contratos rigurosos y licitaciones, las metodologías tradicionales (cascada con documentación sólida o iterativas clásicas) continúan siendo esenciales. En la universidad, se requieren auditorías de calidad, documentación formal y actas de aceptación antes de llevar a cabo pagos o validar proyectos; no obstante, esto es algo que a veces los enfoques totalmente ágiles pasan por alto.
  	\item \textbf{¿Qué consecuencias tiene aprobar requisitos incorrectos al inicio?}\\
  	% Escribe tu respuesta aquí
+ 	El hecho de aprobar requisitos erróneos produce un efecto de "bola de nieve". En fases avanzadas de construcción o pruebas, mejorar un error arquitectónico (como el hecho de no haber incluido la concurrencia en las reservas de laboratorios) es mucho más caro en términos de tiempo y esfuerzo que si se hubiera detectado durante la etapa de análisis. Puede llevar a que el proyecto fracase completamente o a que los usuarios no acepten el sistema.
  	
  	\item \textbf{¿Qué metodología asigna mayor importancia explícita a los riesgos?}\\
  	% Escribe tu respuesta aquí
- 	
+ 	La gestión de riesgos es completamente diferente. Por una parte, el \textbf{Modelo de Prototipos} emplea el riesgo (como la falta de comprensión por parte del usuario) como impulso para mejorar y perfeccionar las interfaces hasta que dicho riesgo se elimine. Por otro lado, \textbf{RAD} evalúa el riesgo en función del cronograma; si un requerimiento nuevo representa riesgos técnicos excesivos o pone en peligro la fecha límite, lo elimina o lo excluye del alcance inicial para salvaguardar la caja de tiempo (Timeboxing). Es importante señalar que para proyectos dedicados completamente al riesgo, metodologías como el Modelo en Espiral serían las más apropiadas.
  	\item \textbf{¿Cuál sería más adecuada para software médico, bancario o gubernamental?}\\
  	% Escribe tu respuesta aquí
- 	
+Para software crítico (gubernamental, bancario o médico), se tiende a preferir metodologías tradicionales rigurosas que unan modelos en cascada (o en V) con análisis de riesgos detallado y validaciones estrictas en cada etapa. Estos sistemas se encuentran expuestos a rigurosas auditorías, leyes de protección de datos (como la LOPDP) y certificaciones de seguridad, en las que la trazabilidad completa y la documentación detallada son más valiosas que la rapidez en la entrega.
  	\item \textbf{¿Qué aspectos de estas metodologías podrían combinarse con enfoques ágiles?}\\
  	% Escribe tu respuesta aquí
+ 	Del Modelo de Prototipos se puede rescatar la "retroalimentación constante del cliente", la cual es la base de los \textit{Sprint Reviews} en Scrum. De RAD, el concepto de iteraciones cortas y modulares (cajas de tiempo de 15 a 30 días) se traduce directamente en los \textit{Sprints} de metodologías ágiles. Ambos enfoques tradicionales sentaron las bases iterativas e incrementales que hoy utiliza la agilidad.
  \end{itemize}
  %% =========================================================================
  %% SECCIÓN 4: PRESENTACIÓN, DEFENSA Y CONCLUSIÓN
@@ -836,23 +841,6 @@ Siguiendo las directrices de la metodología RAD, el tiempo de entrega de 6 mese
 \bibliography{sn-bibliography}% common bib file
 %% if required, the content of .bbl file can be included here once bbl is generated
 %%\input sn-article.bbl
-\begin{thebibliography}{9}
-	
-	\bibitem{iso2018}
-	International Organization for Standardization (ISO). (2018). \textit{ISO/IEC/IEEE 29148:2018 -- Systems and software engineering -- Life cycle processes -- Requirements engineering}. ISO.
-	
-	\bibitem{wood1992}
-	Wood, D.~P., \& Kang, K.~C. (1992). \textit{A Classification and Bibliography of Software Prototyping}. Software Engineering Institute, Carnegie Mellon University.
-	
-	\bibitem{openstax}
-	OpenStax / Rice University. \textit{Software Engineering Process}. Engineering LibreTexts.
-	
-	\bibitem{mumbai}
-	University of Mumbai. \textit{Software Engineering and Project Management}.
-	
-	\bibitem{bjarnason2023}
-	Bjarnason, E., Lang, F., \& Mj\"oberg, A. (2023). An empirically based model of software prototyping: a mapping study and a multi-case study. \textit{Empirical Software Engineering}, 28, 115.
-	
-\end{thebibliography}
+
 
 \end{document}
