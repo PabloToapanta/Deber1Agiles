@@ -145,9 +145,9 @@
 
 La digitalización y la automatización de los procedimientos operativos se han vuelto elementos esenciales para asegurar que la administración e institución sean eficientes en el actual escenario de la educación superior. Uno de los desafíos más frecuentes en las universidades es la administración de inventarios tecnológicos y recursos físicos, procedimientos que, si se llevan a cabo manualmente o sin coordinación, tienden a provocar cuellos de botella, pérdidas de información y sobreposiciones horarias.
 
-Este estudio de caso se ocupa de la necesidad de la Universidad Técnica de Ambato, que consiste en desarrollar un sistema para gestionar y prestar laboratorios, dado el contexto actual. La dificultad primordial de este proyecto no solo radica en la complejidad de sus tareas (que van desde la reserva de espacios hasta el control transaccional de equipos y la elaboración de informes), sino también en una limitación importante y es que el sistema tiene que ser entregado en seis meses.
+Este caso de estudio aborda la necesidad que tiene la Universidad Técnica de Ambato en el contexto actual, que es desarrollar un sistema para administrar y ofrecer laboratorios. El desafío principal de este proyecto radica en las funciones del sistema como prestamos o reservas de equipos y laboratorios, y un plazo de tiempo limitado de seis meses.
 
-Para afrontar este reto, el equipo de trabajo ha organizado la planificación del proyecto analizando la factibilidad de dos enfoques de desarrollo iterativos y enfocados en la retroalimentación constante: el modelo de construcción de prototipos y el método conocido como \textbf{Desarrollo Rápido de Aplicaciones (RAD)}. Los dos enfoques enfatizan que los usuarios estén activamente involucrados desde etapas tempranas, surgiendo como marcos estratégicos de trabajo para garantizar el entendimiento de las necesidades y la entrega puntual del producto, lo que reduce el peligro de desviaciones en el calendario.
+Para afrontar este reto, el equipo de trabajo ha organizado la planificación del proyecto analizando la factibilidad de dos enfoques de desarrollo iterativos y enfocados en la retroalimentación constante: el modelo de construcción de prototipos y el método conocido como \textbf{Desarrollo Rápido de Aplicaciones (RAD)}. Los dos enfoques destacan que los usuarios estén activamente involucrados desde el inicio, convirtiéndose en fuentes de retroalimentación constante para comprender las necesidades del producto.
 
 En este documento, se explicará el análisis inicial de los interesados y las necesidades del sistema. Después, se expondrá la adaptación técnica, las etapas y los entregables de cada una de las metodologías asignadas. Por último, se examinará cómo responden ambos modelos ante un evento imprevisto de cambio de alcance y se concluirá con una discusión crítica acerca de las ventajas, desventajas y adecuación de cada enfoque para este proyecto particular.
  %% =========================================================================
@@ -619,8 +619,11 @@ Para el desarrollo del Sistema de Gestión y Préstamo de Laboratorios de la Uni
  \begin{itemize}
  	\item \textbf{Administrador del Sistema:} Personal encargado de la configuración global, parametrización del sistema y gestión del catálogo de laboratorios, equipos y asignación de responsables.
  	\item \textbf{Responsable de Laboratorio:} Usuarios encargados del control operativo, cuya función principal es aprobar o rechazar solicitudes, registrar la entrega (check-in) y devolución (check-out) de equipos, y reportar novedades.
- 	\item \textbf{Docente:} Usuarios que requieren reservar los espacios físicos (laboratorios) para sus prácticas académicas y solicitar el préstamo de equipos tecnológicos.
+ 	\item \textbf{Docente:} Usuarios que desean reservar los espacios físicos (laboratorios) para sus prácticas académicas y solicitar el préstamo de equipos tecnológicos.
  	\item \textbf{Estudiante:} Usuarios finales con capacidad para consultar la disponibilidad del inventario en tiempo real y emitir solicitudes de préstamo de equipos.
+ 	\begin{remark}
+ 		La incorporación de la aplicación móvil y las políticas de protección de datos amplía el mapa de interesados definido inicialmente en la Parte 1. Se incorporan el \textbf{Delegado de Protección de Datos (DPO)}, encargado de velar por el cumplimiento de la LOPDP; el \textbf{Departamento Legal} de la institución, cuya validación es necesaria antes de tratar datos sensibles; y el \textbf{Administrador de Seguridad de la Información}, responsable de las medidas técnicas de cifrado y almacenamiento seguro de las imágenes recolectadas \cite{piray-rodriguez_alisis_2025}.
+ 	\end{remark}
  \end{itemize}
 \subsubsection{Requisitos Funcionales (RF):}
 De acuerdo con las necesidades de la universidad,los requisitos funcionales encontrados fueron:
@@ -648,12 +651,12 @@ Basado en los estándares de calidad de software y en \cite{alvarez-pineda_imple
  \subsubsection{Análisis de Riesgos}
  Considerando el plazo de seis meses y las complejidades inherentes habladas en  \cite{alvarez-pineda_implementacion_2026}, se identifican los siguientes riesgos críticos:
  \begin{itemize}
- 	\item \textbf{Riesgo 1 (Transición de Datos):} Inconsistencias o pérdida de información durante la migración de los registros manuales o en papel hacia la nueva base de datos del sistema \cite[p.~345]{alvarez-pineda_implementacion_2026}.
+ 	\item \textbf{Riesgo 1 (Transición de Datos):} Inconsistencias o pérdida de información durante la migración de los registros manuales o en papel hacia la nueva base de datos del sistema, esto es un problema que se dio en \cite[p.~345]{alvarez-pineda_implementacion_2026}.
  	\item \textbf{Riesgo 2 (Adopción del Usuario):} Resistencia al uso del nuevo sistema por parte del personal o usuarios acostumbrados a procesos informales, lo que requeriría sesiones adicionales de gestión del cambio y capacitación \cite[p.~345]{alvarez-pineda_implementacion_2026}.
  	\item \textbf{Riesgo 3 (Desviación del Cronograma):} Imposibilidad de cumplir con el límite estricto de seis meses debido a la solicitud de nuevas características fuera del alcance inicial o validaciones tardías por parte de los interesados.
  \end{itemize}
  \subsubsection{Requisitos que Necesitan Mayor Aclaración}
- Antes de iniciar los ciclos de diseño interactivo de la metodología RAD, es imperativo que la universidad (cliente) aclare los siguientes puntos operativos:
+ Antes de iniciar los ciclos de diseño interactivo de la metodología RAD, es imperativo que la universidad  aclare los siguientes puntos operativos:
  \begin{itemize}
  	\item ¿Cuáles son los criterios exactos y las políticas institucionales o sanciones en caso de que un estudiante o docente reporte daños graves, pérdida o retraso excesivo de un equipo tecnológico?
  	\item ¿Existen límites de tiempo predefinidos (en horas o días) por los cuales un equipo o laboratorio puede ser reservado o prestado a un solo usuario?
@@ -686,6 +689,19 @@ En la adaptación práctica del proyecto universitario, estas fases se correlaci
  	\item \textbf{Fase 3:} Código fuente funcional versionado, Base de datos integrada.
  	\item \textbf{Fase 4:} Manuales de usuario, Reporte de Pruebas de Aceptación (UAT) y Sistema en Producción \cite{purnamasari_rapid_2026}.
  \end{itemize}
+ \subsubsection{Actividades por Fase}
+ Se detallan las actividades principales ejecutadas en cada una de sus fases:
+ 
+ \begin{itemize}
+ 	\item \textbf{Fase 1 (Planificación de Requisitos):} Entrevistas semiestructuradas con los interesados (docentes, responsables de laboratorio, estudiantes y administrador); talleres de Diseño Conjunto de Aplicaciones (JAD) para definir el alcance, además de la elaboración de un mapa del flujo de información entre usuarios e inventario.
+ 	
+ 	\item \textbf{Fase 2 (Diseño de Usuario):} Elaboración de wireframes y maquetas de alta fidelidad en Figma, ejecución de ciclos iterativos de retroalimentación con los usuarios, validación de los flujos de reserva, entrega y devolución de equipos y por último la definición del Modelo Entidad-Relación.
+ 	
+ 	\item \textbf{Fase 3 (Construcción):} Codificación modular distribuida entre los Equipos A y B trabajando en paralelo, uso de herramientas de desarrollo rápido o Low-Code/RAD \cite{radvilaite_integrating_2025}; ejecución continua de pruebas unitarias y de caja gris para validar la lógica de negocio junto con la interfaz.
+ 	
+ 	\item \textbf{Fase 4 (Transición):} Migración de los registros existentes hacia la nueva base de datos; capacitación a los distintos roles de usuario; ejecución de Pruebas de Aceptación de Usuario (UAT) y despliegue del sistema en el entorno de producción.
+ \end{itemize}
+ 
  \subsubsection{Matriz de Responsables y Equipos Paralelos}
  La metodología RAD sugiere dividir el desarrollo en equipos paralelos para ganar velocidad \cite{purnamasari_rapid_2026}:
  \begin{itemize}
@@ -720,43 +736,72 @@ Siguiendo las directrices de la metodología RAD, el tiempo de entrega de 6 mese
  	\caption{Flujo de trabajo de la Metodología RAD.}\label{fig:rad}
  	 \end{figure}
  
- \subsection{Parte 4: Evento Inesperado (App Móvil y Protección de Datos)}
- % Responder las 7 preguntas guía de la Parte 4
- Al finalizar el tercer mes, el cliente (universidad) solicita incorporar una aplicación móvil para reservas y reportes fotográficos, además de exigir el cumplimiento de nuevas políticas institucionales de protección de datos. Frente a este escenario, el equipo de desarrollo analiza el impacto basándose en los principios de la metodología RAD:
- 
- \begin{enumerate}
- 	\item \textbf{¿En qué fase se encuentra el proyecto?} \\
- 	Según el cronograma general establecido, al finalizar el tercer mes el proyecto acaba de concluir las iteraciones de \textit{Diseño de Usuario} y se encuentra en las etapas iniciales de la fase de \textbf{Construcción} (codificación modular) \cite{purnamasari_rapid_2026}.
- 	
- 	\item \textbf{¿Qué documentos o productos deben modificarse?} \\
- 	Se debe actualizar la Matriz de Requisitos (SRS) para incluir las normativas de protección de datos y el acceso al hardware del dispositivo (cámara). Además, se deben modificar los Prototipos UI/UX (para incluir las interfaces móviles) y el Modelo de Datos (para añadir cifrado de información sensible y almacenamiento de imágenes) \cite{alvarez-pineda_implementacion_2026}.
- 	
- 	\item \textbf{¿Qué actividades tendrían que repetirse?} \\
- 	Es necesario ejecutar un ciclo iterativo rápido (caja de tiempo corta) de la fase de \textbf{Diseño de Usuario} \cite{purnamasari_rapid_2026}. Esto implica realizar prototipos de baja y alta fidelidad exclusivamente para las pantallas de la aplicación móvil y someter la arquitectura de la base de datos a una revisión de seguridad y privacidad.
- 	
- 	\item \textbf{¿Cómo afectaría el cambio al tiempo y al costo?} \\
- 	En RAD, el tiempo es una restricción inamovible (6 meses). Por lo tanto, agregar un canal completamente nuevo (app móvil) y auditorías de seguridad incrementará el costo del proyecto, ya que obligará a asignar más recursos (desarrolladores adicionales) a los equipos paralelos para no retrasar la fase de construcción \cite{purnamasari_rapid_2026}. Si no hay presupuesto, el alcance web original debe reducirse.
- 	
- 	\item \textbf{¿La metodología permite incorporar el cambio fácilmente?} \\
- 	\textbf{Sí.} A diferencia del modelo en Cascada, RAD está diseñado para ser flexible. El uso de iteraciones cortas, retroalimentación continua y desarrollo en módulos permite que los equipos absorban nuevos requerimientos sin colapsar la arquitectura de lo que ya se está construyendo \cite{radvilaite_integrating_2025, purnamasari_rapid_2026}.
- 	
- 	\item \textbf{¿Aceptarían el cambio inmediatamente, lo aplazarían o lo rechazarían?} \\
-Se optará por una \textbf{aceptación condicionada bajo un enfoque de implementación por fases} \cite[p.~344]{purnamasari_rapid_2026}. 
-\begin{itemize}
-	\item Las \textbf{políticas de protección de datos} se aceptan e implementan de inmediato, ya que constituyen una directriz institucional crítica y obligatoria para la operación del sistema.
-	\item La \textbf{aplicación móvil} se acepta pero se gestiona dividiendo su alcance dentro de los plazos establecidos: se propondrá desarrollar una Aplicación Web Progresiva (PWA) o utilizar herramientas de bajo código para acelerar la entrega \cite{radvilaite_integrating_2025}, enfocando el esfuerzo \textit{únicamente} en la toma de fotos para reportes. Si la universidad exige una aplicación nativa completa, esta se aplazará como una actualización programada para una fase posterior al cumplimiento de los seis meses \cite[p.~344]{purnamasari_rapid_2026}.
-\end{itemize}
- 	
- 	\item \textbf{¿Qué procedimiento formal utilizarían para gestionarlo?} \\
- 	Se convocará de urgencia a una sesión de Diseño Conjunto de Aplicaciones (JAD) con las autoridades, el departamento legal (por los datos sensibles) y los docentes. En esta reunión se expondrá el impacto en la caja de tiempo, se negociará el alcance del Producto Mínimo Viable (MVP) para la app móvil, y se firmará un acta de modificación de requerimientos para autorizar al equipo de Construcción a proceder bajo el nuevo esquema \cite{purnamasari_rapid_2026}.
+	 \subsection{Parte 4: Evento Inesperado (App Móvil y Protección de Datos)}
+	 % Responder las 7 preguntas guía de la Parte 4
+	 Al finalizar el tercer mes, el cliente (universidad) solicita incorporar una aplicación móvil para reservas y reportes fotográficos, además de exigir el cumplimiento de nuevas políticas institucionales de protección de datos. Frente a este escenario, el equipo de desarrollo analiza el impacto basándose en los principios de la metodología RAD:
+	 
+	 \begin{enumerate}
+	 	\item \textbf{¿En qué fase se encuentra el proyecto?} \\
+	 	Según el cronograma general establecido, el proyecto se encuentra en la etapa final de la dase de \textbf{Diseño de Usuario}, lo que significa que al recibir la solicitud, los programadores aún no han iniciado a codificar seriamente, esto es una buena noticia dado que las maquetas aun se encuentra en proceso de validación.
+	 	
+	 	\item \textbf{¿Qué documentos o productos deben modificarse?} \\
+	 	Se debe actualizar la Matriz de Requisitos (SRS) con el fin de añadir las normativas de protección de datos y el acceso al hardware del dispositivo como la cámara. En el Ecuador, esto implica cumplir la Ley Orgánica de Protección de Datos Personales (LOPDP), que significa agregar un personal y encargado del tratamiento de datos, conseguir el consentimiento para el uso de informacion personal esto es vital porque estudios sobre universidades ecuatorianas señalan que, si bien existe un marco normativo robusto encabezado por la Constitución y la LOPDP, los procesos no se cumplen al pie de la letra \cite{piray-rodriguez_alisis_2025}. Por ello, además del SRS, deben modificarse los Prototipos UI/UX (para incluir las interfaces móviles y los flujos de consentimiento) y el Modelo de Datos (para añadir cifrado de información sensible y almacenamiento seguro de imágenes).
+	 	
+	 	\item \textbf{¿Qué actividades tendrían que repetirse?} \\
+	 	Es necesario ejecutar un ciclo iterativo rápido (caja de tiempo corta) de la fase de \textbf{Diseño de Usuario}. Esto implica realizar prototipos de baja y alta fidelidad exclusivamente para las pantallas de la aplicación móvil y someter la arquitectura de la base de datos a una revisión de seguridad y privacidad.
+	 	
+	 	\item \textbf{¿Cómo afectaría el cambio al tiempo y al costo?} \\
+	 	En RAD, los seis meses son un límite fijo. Por consiguiente, el proyecto tendrá un coste superior si se añade un canal totalmente nuevo (una aplicación móvil) y auditorías de seguridad, pues será necesario destinar más recursos (más desarrolladores) a los equipos paralelos para no demorar la etapa de construcción. Si no hay presupuesto, el alcance web inicial tiene que disminuir.
+	 	
+	 	\item \textbf{¿La metodología permite incorporar el cambio fácilmente?} \\
+	 	\textbf{Sí.} A diferencia del modelo en Cascada, RAD está diseñado para ser flexible. El uso de iteraciones cortas, retroalimentación continua y desarrollo en módulos permite que los equipos absorban nuevos requerimientos sin colapsar la arquitectura de lo que ya se está construyendo
+	 	
+	 	\item \textbf{¿Aceptarían el cambio inmediatamente, lo aplazarían o lo rechazarían?} \\
+	Se optará por una \textbf{aceptación condicionada bajo un enfoque de implementación por fases}.
+	\begin{itemize}
+		\item Las \textbf{políticas de protección de datos} se ponen en práctica y se aceptan enseguida, pues son una directriz institucional esencial y obligatoria para la gestión del sistema.
+		
+		\item Se acepta la aplicación móvil, pero su gestión se realiza dividiendo su alcance en los plazos fijados. Se sugerirá crear una Aplicación Web Progresiva (PWA) o emplear herramientas de bajo código para acelerar la entrega, concentrando el trabajo solamente en las fotografías para los informes. Si la universidad requiere una aplicación nativa completa, esta se retrasará hasta una actualización programada para un periodo posterior a los seis meses. 
+		
+	\end{itemize}
+	 	
+	 	\item \textbf{¿Qué procedimiento formal utilizarían para gestionarlo?} \\
+	 	Se convocará de urgencia a una sesión de Diseño Conjunto de Aplicaciones (JAD) con las autoridades, el departamento legal (por los datos sensibles) y los docentes. En esta reunión se expondrá el impacto en la caja de tiempo, se negociará el alcance del Producto Mínimo Viable (MVP) para la app móvil, y se firmará un acta de modificación de requerimientos para autorizar al equipo de Construcción a proceder bajo el nuevo esquema 
  \end{enumerate}
  %% =========================================================================
  %% SECCIÓN 3: PREGUNTAS DE DISCUSIÓN FINAL (Individual / Comparativa)
  %% =========================================================================
+\section{Conclusiones}
+
  \section{Preguntas para la Discusión Final}\label{sec:discusion}
- \subsection{Perspectiva desde el Modelo de Prototipos (Leslie Coello)}
- \subsection{Perspectiva desde la Metodología RAD (Pablo Toapanta)}
- 
+ \begin{itemize}
+ 	\item \textbf{¿Qué metodología ofrece mayor control y trazabilidad?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Cuál facilita la detección temprana de errores?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Cuál enfrenta mayores dificultades cuando cambian los requisitos?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿En qué tipo de proyectos sería conveniente utilizar las metodologías utilizadas?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Por qué una metodología tradicional todavía puede ser apropiada?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Qué consecuencias tiene aprobar requisitos incorrectos al inicio?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Qué metodología asigna mayor importancia explícita a los riesgos?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Cuál sería más adecuada para software médico, bancario o gubernamental?}\\
+ 	% Escribe tu respuesta aquí
+ 	
+ 	\item \textbf{¿Qué aspectos de estas metodologías podrían combinarse con enfoques ágiles?}\\
+ 	% Escribe tu respuesta aquí
+ \end{itemize}
  %% =========================================================================
  %% SECCIÓN 4: PRESENTACIÓN, DEFENSA Y CONCLUSIÓN
  %% =========================================================================
